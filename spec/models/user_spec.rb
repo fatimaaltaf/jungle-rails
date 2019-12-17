@@ -78,19 +78,19 @@ RSpec.describe User, type: :model do
       expect(@user[:email]).to eq(@logged_user[:email])
     end
 
-    # it "is valid with non case sensitive email" do
-    #   @email = "HOMER@simpson.com"
-    #   @password = "aaa"
-    #   @logged_user = User.authenticate_with_credentials(@email, @password)
-    #   expect(@user[:email]).to eq(@logged_user[:email])
-    # end
+    it "is valid with non case sensitive email" do
+      @email = "POLLY.PARROT@gmail.com"
+      @password = "abcde"
+      @logged_user = User.authenticate_with_credentials(@email, @password)
+      expect(@user[:email]).to eq(@logged_user[:email])
+    end
 
-    # it "is valid spaces in email field" do
-    #   @email = "    homer@simpson.com   "
-    #   @password = "aaa"
-    #   @logged_user = User.authenticate_with_credentials(@email, @password)
-    #   expect(@user[:email]).to eq(@logged_user[:email])
-    # end
+    it "is valid with spaces in email field" do
+      @email = "    polly.parrot@gmail.com   "
+      @password = "abcde"
+      @logged_user = User.authenticate_with_credentials(@email, @password)
+      expect(@user[:email]).to eq(@logged_user[:email])
+    end
 
     # it "is not valid with incorrect password" do
     #   @email = "homer@simpson.com"
