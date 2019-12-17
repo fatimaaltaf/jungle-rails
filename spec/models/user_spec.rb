@@ -46,11 +46,9 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
     end
 
-    it "is case sensitive password" do
+    it "is invalid with a case sensitive password" do
       @user.password = "aAA"
       expect(@user).to_not be_valid
     end
-
-
   end
 end
