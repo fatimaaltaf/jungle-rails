@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   def self.authenticate_with_credentials(email, password)
     email = email.strip
-    user = User.where("lower(email) = ?", email.downcase).first_name
-    if (user && user.authenticate_with_credentials(password))
+    user = User.where("lower(email) = ?", email.downcase).first
+    if (user && user.authenticate(password))
       return user
     end
     nil

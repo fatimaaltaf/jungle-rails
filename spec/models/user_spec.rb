@@ -66,8 +66,44 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # describe '.authenticate_with_credentials' do
-  #   before(:each) do
-  #     @user = User.create(id: 1, first_name: "homer", last_name: "simpson", email: "homer@simpson.com", password: "aaa", password_confirmation: "aaa")
-  #   end
+  describe '.authenticate_with_credentials' do
+    before(:each) do
+      @user = User.create(id: 1, first_name: "Polly", last_name: "Parrot", email: "polly.parrot@gmail.com", password: "abcde", password_confirmation: "abcde")
+    end
+
+    it "is valid with correct login information" do
+      @email = "polly.parrot@gmail.com"
+      @password = "abcde"
+      @logged_user = User.authenticate_with_credentials(@email, @password)
+      expect(@user[:email]).to eq(@logged_user[:email])
+    end
+
+    # it "is valid with non case sensitive email" do
+    #   @email = "HOMER@simpson.com"
+    #   @password = "aaa"
+    #   @logged_user = User.authenticate_with_credentials(@email, @password)
+    #   expect(@user[:email]).to eq(@logged_user[:email])
+    # end
+
+    # it "is valid spaces in email field" do
+    #   @email = "    homer@simpson.com   "
+    #   @password = "aaa"
+    #   @logged_user = User.authenticate_with_credentials(@email, @password)
+    #   expect(@user[:email]).to eq(@logged_user[:email])
+    # end
+
+    # it "is not valid with incorrect password" do
+    #   @email = "homer@simpson.com"
+    #   @password = "bbbb"
+    #   @logged_user = User.authenticate_with_credentials(@email, @password)
+    #   expect(@logged_user).to eq(nil)
+    # end
+
+    # it "is not valid with incorrect email" do
+    #   @email = "marge@simpson.com"
+    #   @password = "aaa"
+    #   @logged_user = User.authenticate_with_credentials(@email, @password)
+    #   expect(@logged_user).to eq(nil)
+    # end
+  end
 end
