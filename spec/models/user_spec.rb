@@ -20,5 +20,37 @@ RSpec.describe User, type: :model do
       @user.last_name = nil
       expect(@user).to_not be_valid
     end
+
+    it "is invalid without email" do
+      @user.email = nil
+      expect(@user).to_not be_valid
+    end
+
+    it "is invalid without email" do
+      @user.email = nil
+      expect(@user).to_not be_valid
+    end
+
+    it "is invalid without email" do
+      @user.email = nil
+      expect(@user).to_not be_valid
+    end
+
+    it "is invalid without password" do
+      @user.password = nil
+      expect(@user).to_not be_valid
+    end
+
+    it "is invalid with a password with a length less than 5 characters" do
+      @user.password = "abcd"
+      expect(@user).to_not be_valid
+    end
+
+    it "is case sensitive password" do
+      @user.password = "aAA"
+      expect(@user).to_not be_valid
+    end
+
+
   end
 end
