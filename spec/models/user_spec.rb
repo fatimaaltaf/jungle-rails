@@ -92,18 +92,18 @@ RSpec.describe User, type: :model do
       expect(@user[:email]).to eq(@logged_user[:email])
     end
 
-    # it "is not valid with incorrect password" do
-    #   @email = "homer@simpson.com"
-    #   @password = "bbbb"
-    #   @logged_user = User.authenticate_with_credentials(@email, @password)
-    #   expect(@logged_user).to eq(nil)
-    # end
+    it "is not valid with incorrect password" do
+      @email = "polly.parrot@gmail.com"
+      @password = "abcdf"
+      @logged_user = User.authenticate_with_credentials(@email, @password)
+      expect(@logged_user).to eq(nil)
+    end
 
-    # it "is not valid with incorrect email" do
-    #   @email = "marge@simpson.com"
-    #   @password = "aaa"
-    #   @logged_user = User.authenticate_with_credentials(@email, @password)
-    #   expect(@logged_user).to eq(nil)
-    # end
+    it "is not valid with incorrect email" do
+      @email = "papa.parrot@gmail.com"
+      @password = "abcde"
+      @logged_user = User.authenticate_with_credentials(@email, @password)
+      expect(@logged_user).to eq(nil)
+    end
   end
 end
